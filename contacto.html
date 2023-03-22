@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/4f85c2f6ef.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="StyleSheet" href="css/cont.css" type="text/css" media="screen">
+    <title>Contacto</title>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+        <a href="index.html" class="logo">
+          <img alt="logo"src="images/logo.png"/>
+        </a>
+        <div class="Wikii"><h1 class="er">Wikii</h1></div>
+        <ul class="nav__ul">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="cursos.html">Cursos</a></li>
+          <li><a href="#">Sobre nosotros</a></li>
+          <li><a href="perfil.html">Cuenta</a></li>
+          <button class="switch" id="switch">
+            <span><i class="fas fa-sun"></i></span>
+            <span><i class="fas fa-moon"></i></span>
+        </button>
+        </ul>
+      </nav>
+  </header>
+    <section class="form_wrap">
+        <section class="cantact_info">
+            <section class="info_title">
+                <span class="fa fa-user-circle"></span>
+                <h2>INFORMACIÓN<br>DE CONTACTO</h2>
+            </section>
+            <section class="info_items">
+                <p><span class="fa fa-envelope"></span> Wikiicontact@gmail.com</p>
+            </section>
+        </section>
+        <form action="https://formsubmit.co/Wikii.contact@gmail.com" method="POST" class="form_contact">
+            <h2>Envía un mensaje</h2>
+            <div class="user_info">
+                <label for="names" required>Nombres*</label>
+                <input type="text" id="names">
+
+                <label for="phone">Teléfono / Celular</label>
+                <input type="number" id="phone">
+
+                <label for="email">Correo electrónico *</label>
+                <input type="text" id="email">
+
+                <label for="mensaje">Mensaje *</label>
+                <div class="characters">
+                  <span class="min_num">0</span>
+                  <span class="limit_num">/255</span>
+                </div>
+                <textarea name="" id="" cols="150" rows="60" maxlength="255"size="90s"></textarea>
+                
+                <input type="submit" value="Enviar Mensaje" id="btnSend"> 
+            </div>
+        </form>
+        <div>
+          <h2>
+            <header>
+
+            </header>
+          </h2>
+        </div>
+    <script>
+        const wrapper = document.querySelector(".wrapper");
+        const fileName = document.querySelector(".file-name");
+        const defaultBtn = document.querySelector("#default-btn");
+        const customBtn = document.querySelector("#custom-btn");
+        const cancelBtn = document.querySelector("#cancel-btn i");
+        const img = document.querySelector("img");
+        let regExp = /[0-9a-zA-Z\^\&\'\@\{\}\[\]\,\$\=\!\-\#\(\)\.\%\+\~\_ ]+$/;
+        function defaultBtnActive(){
+          defaultBtn.click();
+        }
+        defaultBtn.addEventListener("change", function(){
+          const file = this.files[0];
+          if(file){
+            const reader = new FileReader();
+            reader.onload = function(){
+              const result = reader.result;
+              img.src = result;
+              wrapper.classList.add("active");
+            }
+            cancelBtn.addEventListener("click", function(){
+              img.src = "";
+              wrapper.classList.remove("active");
+            })
+            reader.readAsDataURL(file);
+          }
+          if(this.value){
+            let valueStore = this.value.match(regExp);
+            fileName.textContent = valueStore;
+          }
+        });
+     </script>
+
+    <script src="java.js"></script>
+    <script>
+      const btnSwitch = document.querySelector('#switch');
+
+btnSwitch.addEventListener('click', () => {
+	document.body.classList.toggle('dark');
+	btnSwitch.classList.toggle('active');
+
+	// Guardamos el modo en localstorage.
+	if(document.body.classList.contains('dark')){
+		localStorage.setItem('dark-mode', 'true');
+	} else {
+		localStorage.setItem('dark-mode', 'false');
+	}
+});
+
+// Obtenemos el modo actual.
+if(localStorage.getItem('dark-mode') === 'true'){
+	document.body.classList.add('dark');
+	btnSwitch.classList.add('active');
+} else {
+	document.body.classList.remove('dark');
+	btnSwitch.classList.remove('active');
+}
+    </script>
+    <script src="java.js"></script>
+    <script src="jav.js"></script>
+
+</body>
